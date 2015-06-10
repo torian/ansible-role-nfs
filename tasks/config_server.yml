@@ -1,0 +1,19 @@
+---
+
+- name: NFS Server config
+  template:
+    src=etc/default/nfs-kernel-server.j2
+    dest=/etc/default/nfs-kernel-server
+  notify: nfs restart
+
+- name: Exports
+  template:
+    src=etc/exports.d/exports.j2
+    dest="/etc/exports.d/{{item.export_file}}.exports"
+    owner="root"
+    group="root"
+    mode="644"
+  with_items: nfs_exports
+  notify: nfs reload
+
+# vi:ts=2:sw=2:et:ft=yaml

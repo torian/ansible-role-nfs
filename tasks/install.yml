@@ -1,0 +1,16 @@
+---
+
+- name: Install Server packages
+  apt:
+    name={{item}}
+    state=present
+  with_items: nfs_pkgs_server
+  when: is_nfs_server
+
+- name: Install Client packages
+  apt:
+    name={{item}}
+    state=present
+  with_items: nfs_pkgs_client
+
+# vi:ts=2:sw=2:et:ft=yaml

@@ -1,0 +1,13 @@
+---
+
+- include: install.yml
+  tags: nfs_install
+
+- include: config_server.yml
+  tags: nfs_server
+  when: is_nfs_server
+
+#- include: config_client.yml
+#  tags: nfs_client
+
+# vi:ts=2:sw=2:et:ft=yaml

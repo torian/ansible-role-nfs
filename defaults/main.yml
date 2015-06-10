@@ -1,0 +1,27 @@
+---
+
+nfs_pkgs_server:
+  - nfs-kernel-server
+
+nfs_pkgs_client:
+  - nfs-common
+
+# Should the server be installed and configured
+is_nfs_server: False
+
+# NFS config
+nfs_server_rpc_nfsd_count:    8
+nfs_server_rpc_nfsd_priority: 0
+nfs_server_rpc_mountd_opts:   --manage-pids -p 32765
+nfs_server_rpc_nfsd_opts:     -p 2049
+
+# nfs exports for server
+#nfs_exports:
+#  - export_file: some_name
+#    mpoint: /some/mount/point
+#    hosts:
+#      - client: 1.2.3.4/255.255.255.255
+#        perms:  rw,sync,no_root_squash
+
+
+# vi:ts=2:sw=2:et:ft=yaml
