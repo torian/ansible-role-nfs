@@ -6,6 +6,22 @@
     dest=/etc/default/nfs-kernel-server
   notify: nfs-server restart
 
+- name: Create exported Mount Points
+  file:
+    state=directory
+    dest="{{item.mpoint}}"
+    owner="{{item.owner|default(nfs_default_owner)}}"
+    mode="{{item.mode|default('0755')}}"
+  with_items: nfs_exports
+  when: nfs_exports
+
+- name: Directory /etc/exports.d
+  file:
+    state=directory
+    dest="/etc/exports.d"
+    owner="root"
+    mode="0755"
+
 - name: Exports
   template:
     src=etc/exports.d/exports.j2

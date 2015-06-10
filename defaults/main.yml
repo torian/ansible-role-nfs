@@ -23,5 +23,6 @@ nfs_server_rpc_nfsd_opts:     -p 2049
 #      - client: 1.2.3.4/255.255.255.255
 #        perms:  rw,sync,no_root_squash
 
+nfs_default_owner: ubuntu
 
 # vi:ts=2:sw=2:et:ft=yaml
