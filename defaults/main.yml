@@ -12,7 +12,7 @@ is_nfs_server: False
 # NFS config
 nfs_server_rpc_nfsd_count:    8
 nfs_server_rpc_nfsd_priority: 0
-nfs_server_rpc_mountd_opts:   --manage-pids -p 32765
+nfs_server_rpc_mountd_opts:   --manage-gids -p 32765
 nfs_server_rpc_nfsd_opts:     -p 2049
 
 # nfs exports for server
