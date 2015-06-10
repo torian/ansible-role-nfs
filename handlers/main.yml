@@ -1,0 +1,9 @@
+---
+
+- name: nfs-server restart
+  service: name=nfs-kernel-server state=restarted
+
+- name: nfs-server reload
+  service: name=nfs-kernel-server state=reloaded
+
+# vi:ts=2:sw=2:et:ft=yaml
