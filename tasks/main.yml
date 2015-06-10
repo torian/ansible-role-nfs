@@ -7,8 +7,9 @@
   tags: nfs_server
   when: is_nfs_server
 
-#- include: config_client.yml
-#  tags: nfs_client
+- include: config_client.yml
+  tags: nfs_client
+  when: is_nfs_client
 
 - name: Enable NFS Server
   service:

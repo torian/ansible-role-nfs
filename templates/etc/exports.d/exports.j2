@@ -1,6 +1,6 @@
 # << Ansible managed file >>
 
 {% for h in item.hosts %}
-{{item.mpoint}}   {{h.client}}({{h.perms}})
+{{item.mpoint_src}}   {{h.client}}({{h.perms}})
 {% endfor %}
 

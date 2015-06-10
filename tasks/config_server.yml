@@ -9,7 +9,7 @@
 - name: Create exported Mount Points
   file:
     state=directory
-    dest="{{item.mpoint}}"
+    dest="{{item.mpoint_src}}"
     owner="{{item.owner|default(nfs_default_owner)}}"
     mode="{{item.mode|default('0755')}}"
   with_items: nfs_exports
