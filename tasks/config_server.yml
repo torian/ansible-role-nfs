@@ -4,7 +4,7 @@
   template:
     src=etc/default/nfs-kernel-server.j2
     dest=/etc/default/nfs-kernel-server
-  notify: nfs restart
+  notify: nfs-server restart
 
 - name: Exports
   template:
@@ -14,6 +14,6 @@
     group="root"
     mode="644"
   with_items: nfs_exports
-  notify: nfs reload
+  notify: nfs-server reload
 
 # vi:ts=2:sw=2:et:ft=yaml
