@@ -10,6 +10,12 @@ install:
   - pip install ansible
 
 script:
-  - ansible-playbook tests/test.yml -i localhost, --syntax-check 
-  - ansible-playbook tests/test.yml -i localhost, --connection=local --sudo -vvv
+  # Test defaut behavior
+  - ansible-playbook tests/test_defaults.yml -i localhost, --syntax-check 
+  - ansible-playbook tests/test_defaults.yml -i localhost, --connection=local --sudo -vvv
 
+  # Test server configuration
+  - ansible-playbook tests/test_server.yml   -i localhost, --syntax-check 
+  - ansible-playbook tests/test_server.yml   -i localhost, --connection=local --sudo -vvv
+
+# vi:ts=2:sw=2:et:ft=yaml
