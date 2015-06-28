@@ -11,11 +11,12 @@
             export_file: test_server,
             mpoint_src:  /opt,
             mode:        "0755",
-            hosts:
+            hosts: [
               {
-                client: localhost,
-                perms:  ro,sync,root_squash
+                client: "*",
+                perms:  "ro,sync,root_squash"
               }
+            ]
           }
         ]
       }
