@@ -10,10 +10,17 @@
   file:
     state=directory
     dest="{{item.mpoint_src}}"
-    owner="{{item.owner|default(nfs_default_owner)}}"
     mode="{{item.mode|default('0755')}}"
   with_items: nfs_exports
-  when: nfs_exports
+  when: nfs_exports is defined
+
+- name: Check ownership
+  file:
+    state=directory
+    dest="{{item.mpoint_src}}"
+    owner="{{item.owner|default(nfs_default_owner)}}"
+  when: nfs_exports is defined and item.owner is defined
+  with_items: nfs_exports
 
 - name: Directory /etc/exports.d
   file:
