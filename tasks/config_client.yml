@@ -1,0 +1,18 @@
+---
+
+- name: Client mount point path
+  file:
+    state=directory
+    dest="{{item.mpoint_client}}"
+  with_items: nfs_exports
+
+- name: Client mount FS
+  mount:
+    name="{{item.mpoint_client}}"
+    src="{{nfs_server}}:{{item.mpoint_src}}"
+    opts="{{item.clients_opts|default('noatime')}}"
+    fstype=nfs
+    state=present
+  with_items: nfs_exports
+
+# vi:ts=2:sw=2:et:ft=yaml
