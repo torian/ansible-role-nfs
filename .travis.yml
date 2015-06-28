@@ -1,0 +1,15 @@
+---
+language: python
+python:   "2.7"
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get remove -qq --purge nfs-common nfs-kernel-server
+
+install:
+  - pip install ansible
+
+script:
+  - ansible-playbook tests/test.yml -i localhost, --syntax-check 
+  - ansible-playbook tests/test.yml -i localhost, --connection=local --sudo -vvv
+
