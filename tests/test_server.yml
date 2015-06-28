@@ -10,7 +10,7 @@
           {
             export_file: test_server,
             mpoint_src:  /opt,
-            mode:        0755,
+            mode:        "0755",
             hosts:
               {
                 client: localhost,
