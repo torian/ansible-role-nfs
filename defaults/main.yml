@@ -6,8 +6,16 @@ nfs_pkgs_server:
 nfs_pkgs_client:
   - nfs-common
 
-# Should the server be installed and configured
+# NFS Server
+#  If is_nfs_server is set to True, the server to which this role
+#  is applied will provide the NFS service
+#  Disabled by default
 is_nfs_server: False
+
+# NFS client
+#  This role can also be used to configure the nfs client (yea, just use fstab)
+#  Disabled by default
+is_nfs_client: False
 
 # NFS config
 nfs_server_rpc_nfsd_count:    8
@@ -15,13 +23,39 @@ nfs_server_rpc_nfsd_priority: 0
 nfs_server_rpc_mountd_opts:   --manage-gids -p 32765
 nfs_server_rpc_nfsd_opts:     -p 2049
 
-# nfs exports for server
+# NFS exports for server
+#  As this role can be used for both, client and server
+#  configuration, it is recomended that the configuration
+#  item nfs_exports be put in a common group_vars file
+#  The following is en example of the attributes:
 #nfs_exports:
+#
+#    # Required - Name of the exportfs file in the server
 #  - export_file: some_name
-#    mpoint: /some/mount/point
+#
+#    # Required - Filesystem on the server to be shared 
+#    mpoint_src:  /mnt/nfs/data
+#
+#    # Optional - Username / UID of the owner of the filesystem
+#    # If this is not defined, nfs_default_owner is used
+#    owner: some_user
+#
+#    # Optional - Mode
+#    mode: 0755
+#
+#    # Required - Hosts allowed to mount this resource
 #    hosts:
+#        # Required - Client IP/MASK 
 #      - client: 1.2.3.4/255.255.255.255
+#        # Required - Permissions to grant the the client
 #        perms:  rw,sync,no_root_squash
+#
+#    # Required - Client's mount point where the filesystem
+#    # from the server will be mounted
+#    mpoint_client: /some/mount/point
+#
+#    # Optional - Client's mount options
+#    mpoint_opts:   noatime
 
 nfs_default_owner: ubuntu
 
