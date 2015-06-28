@@ -6,13 +6,18 @@
     - {
         role: ansible-role-nfs,
         is_nfs_server: True,
-        nfs_exports:
-          - export_file: test_server
-            mpoint_src:  /opt
-            mode:        0755
+        nfs_exports: [
+          {
+            export_file: test_server,
+            mpoint_src:  /opt,
+            mode:        0755,
             hosts:
-              - client: localhost
+              {
+                client: localhost,
                 perms:  ro,sync,root_squash
+              }
+          }
+        ]
       }
 
 # vi:ts=2:sw=2:et:ft=yaml
