@@ -12,7 +12,7 @@
     src="{{nfs_server}}:{{item.mpoint_src}}"
     opts="{{item.clients_opts|default('noatime')}}"
     fstype=nfs
-    state=present
+    state="{{item.mounted_state|defaut('mounted')}}"
   with_items: nfs_exports
 
 # vi:ts=2:sw=2:et:ft=yaml

@@ -56,6 +56,11 @@ nfs_server_rpc_nfsd_opts:     -p 2049
 #
 #    # Optional - Client's mount options
 #    mpoint_opts:   noatime
+#
+#    # Optional - status parameter for the mount ansible module 
+#    # (default: mounted)
+#    mounted_status: mounted|unmounted|present|absent
+#
 
 nfs_default_owner: ubuntu
 
