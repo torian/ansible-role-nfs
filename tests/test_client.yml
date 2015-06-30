@@ -6,7 +6,6 @@
     - {
         role: ansible-role-nfs,
         is_nfs_server: True,
-        is_nfs_client: True,
         nfs_exports: [
           {
             export_file: test_server,
@@ -18,9 +17,13 @@
                 perms:  "ro,sync,root_squash"
               }
             ],
+            # Usefull for client
             mpoint_client: /mnt/opt
           }
         ]
+        # Client parameters
+        is_nfs_client: True,
+        nfs_server: localhost
       }
 
 # vi:ts=2:sw=2:et:ft=yaml
