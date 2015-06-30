@@ -19,6 +19,7 @@
             ],
             # Usefull for client
             mpoint_client: /mnt/opt
+            mpoint_opts: 'noatime,nfsvers=3'
           }
         ],
         # Client parameters
