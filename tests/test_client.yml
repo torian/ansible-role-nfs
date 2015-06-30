@@ -20,7 +20,7 @@
             # Usefull for client
             mpoint_client: /mnt/opt
           }
-        ]
+        ],
         # Client parameters
         is_nfs_client: True,
         nfs_server: localhost
