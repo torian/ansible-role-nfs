@@ -18,13 +18,13 @@
               }
             ],
             # Usefull for client
-            mpoint_client: /mnt/opt,
-            mpoint_opts: 'noatime,nfsvers=3'
+            mpoint_client: /srv/opt,
+            mpoint_opts: 'noatime,nfsvers=2'
           }
         ],
         # Client parameters
-        is_nfs_client: True,
-        nfs_server: localhost
+        #is_nfs_client: True,
+        #nfs_server: localhost
       }
 
 # vi:ts=2:sw=2:et:ft=yaml
